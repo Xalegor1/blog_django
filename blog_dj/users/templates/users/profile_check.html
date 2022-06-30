@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% block mama %}{% endblock mama %}
 
 
     <!--    <link rel="stylesheet" href="main.css">-->
@@ -12,7 +13,7 @@
       <!-- <img src="img.jpg" alt="John" style="width:100%"> -->
       <div class="m-b-25"> <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url }}" class="img-radius" alt="User-Profile-Image"></div>
         
-      <h1 id="profile-h1">{{ user.username }}</h1>
+      <h1 id="profile-h1">{{ user.username|title }}</h1>
       <p class="title">{{ user.email }}</p>
       <!-- <p>My Social Live  Below</p> -->
       <a href="#" id="auth-links"><i class="fa fa-dribbble"></i></a>

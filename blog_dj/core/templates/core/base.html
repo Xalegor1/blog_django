@@ -40,7 +40,7 @@
               <a class="nav-item nav-link" href="#">Register</a> -->
               <!-- <button class="noselect">Create Post</button> -->
                 
-                <a href="#" id="auth-links">
+                <a href="{% url 'post_create' %}" id="auth-links">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -103,7 +103,7 @@
         <div class="col-md-8">
            {% block content %}{% endblock %}
         </div>
-        
+        {% block mama %}
         <div class="col-md-4">
           <div class="content-sectionw">
             <!-- <h3>Our Sidebar</h3>
@@ -148,6 +148,7 @@
               </div>
           </div>
         </div>
+        {% endblock mama %}
       </div>
 
 

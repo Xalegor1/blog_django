@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from .models import User, Profile
 from core.models import Post
+from django.http import Http404
 # Create your views here.
 
 def register(request):
@@ -46,13 +47,17 @@ def profile_update(request):
     return render(request, 'users/profile-update.html', context=context)
 
 
+@login_required
+def profile_check(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except:
+        raise Http404
 
-def profile_check(request, name):
-    users = Profile.objects.get(user=name)
     context = {
-        'user': users,
+        'user': user,
         'posts':Profile.objects.all() 
     }
-    return render(request, 'users/profile_check.html', context)
+    return render(request, 'users/profile_check.html', context=context)
 
     

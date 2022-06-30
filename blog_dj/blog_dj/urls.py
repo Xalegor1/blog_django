@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('register/', users_views.register, name='register'),
     path('profile/', users_views.profile, name='profile'),
-    path('profile_check/<str:name>', users_views.profile_check, name='profile_check'),
+    re_path(r'^profile_check/(?P<username>[\w\-]+)/$', users_views.profile_check, name='profile_check'),
     path('profile/profile_update/', users_views.profile_update, name='profile-update'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
