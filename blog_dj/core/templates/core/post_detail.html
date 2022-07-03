@@ -3,17 +3,30 @@
 {% block mama %}{% endblock mama %}
     <article class="media content-section">     
             <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
-            <div class="media-body">
-                <div class="article-metadata"> 
-                    <a class="mr-2" href="{% url 'profile' %}">{{ object.author }}</a>
-                    <small class="text-muted">{{ object.date_posted }}</small>   
-                    {% if object.author == user %}
-                    <a class="btn btn-success" href="{% url 'post_update' object.id %}">Update</a>
-                    <a class="btn btn-danger" href="{% url 'post_delete' object.id %}">Delete</a>
-                    {% endif %}  
-                </div>                
-                    <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
-                    <p class="article-content">{{ object.content }}</p>                  
+            <div style="font-size: large;" class="media-body">
+                {% if object.user == post.author %}
+                    <div class="article-metadata"> 
+                        <a class="mr-2" href="{% url 'profile' %}">{{ object.author }}</a>
+                        <small class="text-muted">{{ object.date_posted }}</small>   
+                        {% if object.author == user %}
+                            <a class="btn btn-success" href="{% url 'post_update' object.id %}">Update</a>
+                            <a class="btn btn-danger" href="{% url 'post_delete' object.id %}">Delete</a>
+                        {% endif %}  
+                    </div>                
+                        <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+                        <p class="article-content">{{ object.content }}</p>  
+                        {% else %}
+                        <div class="article-metadata"> 
+                            <a class="mr-2" href="{% url 'profile_check' object.author.username %}">{{ object.author }}</a>
+                            <small class="text-muted">{{ object.date_posted }}</small>   
+                            {% if object.author == user %}
+                                <a class="btn btn-success" href="{% url 'post_update' object.id %}">Update</a>
+                                <a class="btn btn-danger" href="{% url 'post_delete' object.id %}">Delete</a>
+                            {% endif %}  
+                        </div>                
+                            <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+                            <p class="article-content">{{ object.content }}</p> 
+                        {% endif %}                
                 </div>      
             <br>
     </article>      
