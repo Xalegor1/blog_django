@@ -10,7 +10,7 @@
 
     <div class="cardd">
       <!-- <img src="img.jpg" alt="John" style="width:100%"> -->
-      <div class="m-b-25"> <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url }}" class="img-radius" alt="User-Profile-Image"></div>
+      <div class="m-b-25"> <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url }}" class="img-radius" alt="User-Profile-Image" style="object-fit: cover;"></div>
 
       <h1 id="profile-h1">{{ user.username|title }}</h1>
       <p class="title">{{ user.email }}</p>
@@ -35,7 +35,7 @@
       
         
 
-      <p><button id="btn-profile"><a href="{% url 'profile-update' %}" id="auth-links">
+      <p><button id="btn-profile"><a href="{% url 'profile-update' %}" id="auth-links" style="color:white">
         <span></span>
         <span></span>
         <span></span>
